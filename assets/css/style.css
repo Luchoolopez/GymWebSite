@@ -1,0 +1,133 @@
+/* Variables */
+:root {
+    --color-header: #000;
+    --color-body: #f4f4f4;
+    --color-text: #333;
+    --color-primary: #7d0a0a;
+    --color-secondary: #2ecc71;
+    --color-hover: #bf3131;
+    --color-border: #000000;
+    --border-radius: 12px;
+    --padding: 50px;
+    --color-fondotextoprincipal: #681c1;
+}
+
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos generales */
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Cambiar a flex-start para alinear al principio */
+    height: 100vh;
+    margin-top: 110px; /* Subir todo el contenido hacia arriba */
+}
+
+body {
+    background-color: var(--color-body);
+    color: var(--color-text);
+    text-align: center;
+    background-image: url(../images/Background_image_index.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Header */
+header {
+    /*background-color: #681c1;*/
+    color: white;
+    padding: var(--padding);
+    text-align: center;
+}
+
+header h1 {
+    font-size: -webkit-xxx-large;
+    text-transform: uppercase;
+    font-style: italic;
+    color: goldenrod;
+    font-weight: bold; 
+}
+
+/* Estilos de los botones */
+.elementos {
+    list-style: none;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    width: -webkit-fill-available;
+
+}
+
+.elementos li {
+    width: 90%;
+    max-width: 400px;
+}
+
+.elementos a {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.elementos a:hover {
+    background-color: var(--color-hover);
+    color: white;
+    transform: scale(1.05);
+}
+
+a {
+    text-decoration: none; 
+  font-size: 18px; 
+  color: #daa520; 
+  font-weight: bold; 
+  text-transform: uppercase; 
+  padding-left: 10px; 
+  background-color: #264465; 
+  padding: 5px; 
+  border-radius: 25px; 
+  }
+
+/* Iconos en los botones 
+.elementos a::before {
+    content: "📅"; 
+    font-size: 24px;
+}
+
+
+.reservar_clase::before { content: "📌"; }
+.comprar_membresia::before { content: "💳"; }
+.admin_panel::before { content: "⚙️"; }
+.cerrar_sesion::before { content: "🚪"; }
+*/
+/* Diferentes colores para cada botón */
+.comprar_membresia {
+    border-left: 5px solid var(--color-secondary);
+    width: 10px;
+    height: auto;
+}
+
+.imagen_membresia, .reservar_clase, .admin_panel, .cerrar_sesio {
+    width: 200px;  
+    height: auto; 
+    border-radius: 25px;
+ 
+}
+
+
+
+.cerrar_sesion {
+    border-left: 5px solid #95a5a6;
+}
+
