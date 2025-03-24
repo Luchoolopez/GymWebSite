@@ -12,7 +12,9 @@
     AND contrasenia='$contrasenia'");
 
     if(mysqli_num_rows($validar_login) > 0){
+        $datos_usuario = mysqli_fetch_assoc($validar_login);
         $_SESSION['usuario'] = $correo;
+        $_SESSION['rol'] = $datos_usuario['rol'];
         header("location: ../index.php");
         exit;
     }else{
