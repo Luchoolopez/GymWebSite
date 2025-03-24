@@ -29,7 +29,7 @@
         <ul class="elementos">
         <a href=""><img src="assets/images/membresia.png" class="imagen_membresia">membresia</a>
         <a href="Clases.php"><img src="assets\images\reservar.png" class="reservar_clase">Reservar Clase</a>
-        <a href=""><img src="assets\images\progreso.png" class="admin_panel">mi progreso</a>
+        <a href="Panel_de_control.php"><img src="assets\images\progreso.png" class="admin_panel">mi progreso</a>
         <a href="php/cerrar_sesion.php"><img src="assets\images\logout.png" class="cerrar_sesio">Cerrar Sesión</a>
         </ul>
 

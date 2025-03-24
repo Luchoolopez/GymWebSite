@@ -1,10 +1,33 @@
 <?php
+session_start();
+include 'php/conexion_horarios_be.php';
 
-    session_start();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $usuario = $_POST['usuario'];
+    $contrasenia = $_POST['contrasenia'];
 
-    if(isset($_SESSION['usuario'])){
-        header("location: Index.php");
+    $query = "SELECT * FROM usuarios WHERE usuario='$usuario' AND contrasenia='$contrasenia'";
+    $result = $conexion->query($query);
+
+    if ($result->num_rows > 0) {
+        $user = mysqli_fetch_assoc($result);
+        $_SESSION['usuario_id'] = $user['id'];
+        $_SESSION['rol'] = $user['rol'];
+
+        if ($user['rol'] === 'dueño' || $user['rol'] === 'trabajador') {
+            header('Location: Panel_de_control.php');
+        } else {
+            header('Location: Clases.php');
+        }
+    } else {
+        echo "
+        <script>
+            alert('Usuario o contraseña incorrectos');
+            window.location = 'Login.php';
+        </script>
+        ";
     }
+}
 ?>
 
 

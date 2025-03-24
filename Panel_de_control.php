@@ -2,9 +2,25 @@
 session_start();
 include 'php/conexion_horarios_be.php';
 
-// Obtener los horarios actuales
-$query = "SELECT * FROM horarios ORDER BY hora_inicio";
+// Verificar si la sesión está iniciada y si el usuario tiene el rol adecuado
+if (!isset($_SESSION['rol']) || ($_SESSION['rol'] !== 'dueño' && $_SESSION['rol'] !== 'trabajador')) {
+    echo "
+    <script>
+        alert('Acceso denegado');
+        window.location = 'Login.php';
+    </script>
+    ";
+    session_destroy();
+    die();
+}
+
+// Obtener los usuarios
+$query = "SELECT * FROM usuarios";
 $result = $conexion->query($query);
+
+// Obtener los horarios actuales
+$query_horarios = "SELECT * FROM horarios ORDER BY hora_inicio";
+$result_horarios = $conexion->query($query_horarios);
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +43,7 @@ $result = $conexion->query($query);
             <th>Cupo</th>
             <th>Acciones</th>
         </tr>
-        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+        <?php while ($row = mysqli_fetch_assoc($result_horarios)) { ?>
             <tr>
                 <form action="php/actualizar_clase.php" method="POST">
                     <td><?php echo $row['id']; ?></td>
@@ -55,5 +71,38 @@ $result = $conexion->query($query);
         <input type="number" name="cupo" placeholder="Cupo" required>
         <button type="submit">Agregar Clase</button>
     </form>
+
+    <h2>Gestión de Usuarios</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nombre Completo</th>
+            <th>Correo</th>
+            <th>Usuario</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+        </tr>
+        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+            <tr>
+                <form action="php/actualizar_usuario.php" method="POST">
+                    <td><?php echo $row['id']; ?></td>
+                    <td><?php echo $row['nombre_completo']; ?></td>
+                    <td><?php echo $row['correo']; ?></td>
+                    <td><?php echo $row['usuario']; ?></td>
+                    <td>
+                        <select name="rol">
+                            <option value="usuario" <?php if ($row['rol'] == 'usuario') echo 'selected'; ?>>Usuario</option>
+                            <option value="trabajador" <?php if ($row['rol'] == 'trabajador') echo 'selected'; ?>>Trabajador</option>
+                            <option value="dueño" <?php if ($row['rol'] == 'dueño') echo 'selected'; ?>>Dueño</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                        <button type="submit">Actualizar</button>
+                    </td>
+                </form>
+            </tr>
+        <?php } ?>
+    </table>
 </body>
 </html>
