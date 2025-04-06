@@ -12,14 +12,14 @@ $result = $conexion->query($query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clases Disponibles</title>
-    <link rel="stylesheet" href="assets/css/LoginStyles.css">
+    <title>Reservar Clase</title>
+    <link rel="stylesheet" href="assets/css/Reserva_clase.css">
 </head>
 <body>
     <h1>Clases Disponibles</h1>
     <table border="1">
-        <tr>
-            <th>Nombre de Clase</th>
+        <tr> <!--Table row, representa una fila en una tabla, se utiliza dentro de un table para agrupar celdas de datos o encabezados -->
+            <th>Nombre de Clase</th> <!-- Table header, el encabezado de una tabla-->
             <th>Profesor</th>
             <th>Hora Inicio</th>
             <th>Hora Fin</th>
@@ -39,7 +39,7 @@ $result = $conexion->query($query);
             $clase_pasada = $hora_actual > $row['hora_fin'];
         ?>
             <tr>
-                <td><?php echo $row['nombre_clase']; ?></td>
+                <td><?php echo $row['nombre_clase']; ?></td>  <!--Table data, represeunta una celda de datos en una tabla-->
                 <td><?php echo $row['profesor']; ?></td>
                 <td><?php echo $row['hora_inicio']; ?></td>
                 <td><?php echo $row['hora_fin']; ?></td>

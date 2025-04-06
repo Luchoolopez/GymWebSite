@@ -14,10 +14,13 @@
 
 /* Reset de estilos */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        letter-spacing: 0.25px;
+        margin-bottom: 0;
 }
 
 /* Estilos generales */
@@ -99,19 +102,7 @@ a {
   border-radius: 25px; 
   }
 
-/* Iconos en los botones 
-.elementos a::before {
-    content: "📅"; 
-    font-size: 24px;
-}
 
-
-.reservar_clase::before { content: "📌"; }
-.comprar_membresia::before { content: "💳"; }
-.admin_panel::before { content: "⚙️"; }
-.cerrar_sesion::before { content: "🚪"; }
-*/
-/* Diferentes colores para cada botón */
 .comprar_membresia {
     border-left: 5px solid var(--color-secondary);
     width: 10px;

@@ -29,7 +29,7 @@ $result_horarios = $conexion->query($query_horarios);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Control</title>
-    <link rel="stylesheet" href="assets/css/LoginStyles.css">
+    <link rel="stylesheet" href="">
 </head>
 <body>
     <h1>Panel de Control - Gestión de Clases</h1>
